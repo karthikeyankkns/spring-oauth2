@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+ <script th:inline="javascript">
+/*<![CDATA[*/
+
+    var message = [[${message}]];
+    console.log(message);
+
+/*]]>*/
+</script>
+ 
+ <head>
+ <title>>Welcome Security with Spring Boot!</title>
+ </head>
+ <body>
+   
+    
+     <form method="post" th:action="@{/registration}" th:object="${user}" >
+         <div><label> User Name : <input type="text"  name="username"/> </label></div>
+         <div><label> Password: <input type="password" th:field="*{password}" name="password"/> </label></div>
+         <div><label>Confirm Password: <input type="text" th:field="*{passwordConfirm}" name="confirmPassword"/> </label></div>
+       
+       <label>Roles</label><BR/>
+       
+     <select th:field="*{roles}" class="form-control" multiple="multiple">
+       <option th:each="roles: ${rolesList}" th:value="${roles.id}" th:text="${roles.name}"></option>
+    </select>
+       
+
+       <div></div><div></div>
+         <div><input type="submit" value="Register"/>    </div>
+     </form>
+ </body>
+ 
+ 
+
+ 
+ 
+</html>
